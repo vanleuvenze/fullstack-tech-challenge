@@ -1,0 +1,24 @@
+
+.table {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: left;
+	font-size: 20px;
+}
+
+.table td {
+	border-top: 1px solid grey;
+}
+
+.table td {
+	padding: 12px 0px;
+}
+
+.date {
+
+}
+
+.time {
+	font-size: 14px;
+	margin-top: 2px;
+}

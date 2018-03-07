@@ -1,0 +1,57 @@
+
+.transactions__table___31cqC {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: left;
+	font-size: 20px;
+}
+
+.transactions__table___31cqC td {
+	border-top: 1px solid grey;
+}
+
+.transactions__table___31cqC td {
+	padding: 12px 0px;
+}
+
+.transactions__date___1kT2l {
+
+}
+
+.transactions__time___2ADi_ {
+	font-size: 14px;
+	margin-top: 2px;
+}
+h1 {
+	margin: 0;
+	font-size: 32px;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+.ledger__container___3prZP {
+	padding: 0px 24px;
+
+}
+
+.ledger__header___1fmZy {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	padding: 28px 0;
+}
+
+.ledger__ledgerVariations___1IL90 {
+	margin: 0px 5px;
+}
+
+.ledger__ledgerVariations___1IL90:hover {
+	cursor: pointer;
+}
+
+.ledger__balance___1wtAg {
+	padding: 24px 0px;
+	font-size: 28px;
+}

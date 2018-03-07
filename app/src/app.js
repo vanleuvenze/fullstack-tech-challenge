@@ -1,5 +1,14 @@
 import React, {Component} from 'react';
 import {getLedger} from '../requests';
+import Transactions from './Transactions';
+
+import styles from './styles/ledger.css';
+
+const apiLedgerNames = {
+	simple: 'simple-ledger',
+	duplicate: 'duplicate-ledger',
+	complicated: 'complicated-ledger'
+};
 
 class Ledger extends Component {
 	constructor(props) {
@@ -8,33 +17,67 @@ class Ledger extends Component {
 		this.state = {
 			simple: [],
 			complicated: [],
-			duplicate: []
+			duplicate: [],
+			display: 'simple',
+			balance: null,
+			loading: false
 		};
+
+		this.getLedgerData = this.getLedgerData.bind(this);
+		this.updateLedgerData = this.updateLedgerData.bind(this);
 	}
 
-	componentWillMount() {
-		getLedger()
-			.then(json => this.setState({simple: json}));
+	componentDidMount() {
+		this.updateLedgerData('simple');
+	}
 
-		getLedger('complicated-ledger')
-			.then(json => this.setState({complicated: json}));
+	componentWillUpdate(nextProps, nextState) {
+		const changingDisplay = nextState.display !== this.state.display;
 
-		getLedger('duplicate-ledger')
-			.then(json => this.setState({duplicate: json}));
+		if (changingDisplay && !this.state[nextState.display].length) {
+			this.updateLedgerData(nextState.display);
+		}
+	}
+
+	getLedgerData(ledgerName) {
+		return getLedger(apiLedgerNames[ledgerName])
+			.then(({transactions, balance}) => (
+				this.setState({loading: false, [ledgerName]: transactions, balance})
+			))
+			.catch(err => console.log(`error fetching data for ${ledgerName}`, err))
+	}
+
+	updateLedgerData(ledgerName) {
+		this.setState({loading: true}, () => this.getLedgerData(ledgerName));
 	}
 
 	render() {
+		const transactions = this.state[this.state.display];
+		console.log('transactions', transactions);
+
 		return (
-			<div>
-				<ul>
-					{this.state.simple.map((transaction, i) => <li key={i}>{new Date(transaction.activity_id).toLocaleString()}</li>)}
-				</ul>
-				<ul>
-					{this.state.complicated.map((transaction, i) => <li key={i}>{new Date(transaction.activity_id).toLocaleString()}</li>)}
-				</ul>
-				<ul>
-					{this.state.duplicate.map((transaction, i) => <li key={i}>{new Date(transaction.activity_id).toLocaleString()}</li>)}
-				</ul>
+			<div className={styles.container}>
+				<div className={styles.header}>
+					<h1>Investing Account</h1>
+					<div>
+						{['simple', 'complicated', 'duplicate'].map((variation, i) => (
+							<span key={i} className={styles.ledgerVariations} onClick={() => this.setState({display: variation})}>
+								{variation}
+							</span>
+						))}
+					</div>
+				</div>
+
+			<div className={styles.balance}>{this.state.balance}</div>
+
+			<div className={styles.transactionContainer}>
+				<h3>Past Transactions</h3>
+				{this.state.loading
+					? <div>loading...</div>
+					: <Transactions transactions={transactions}/>
+				}
+			</div>
+
 			</div>
 		);
 	}
