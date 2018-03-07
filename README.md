@@ -10,7 +10,7 @@ Uses some es2015 features on the server, so Node version 6.4.0 or higher is requ
     * `git init`
     * `git remote add origin *https://github.com/your-username/repo-name*`
     * `git pull origin master`
-3. Run npm install
+    * `npm install`
 4. Open another terminal window and run `npm run dev-build` to get webpack bundling in watch mode.
 5. In the first terminal window run `npm start`
 6. Navigate to localhost:3000!
