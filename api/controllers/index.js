@@ -14,8 +14,8 @@ router.get('/ledger/:name', function (req, res) {
 
   fs.readFile(normalizedPath, 'utf8', (err, data) => {
     if (err) throw err;
-    const formattedLedgerData = formatLedgerData(JSON.parse(data));
 
+    const formattedLedgerData = formatLedgerData(JSON.parse(data));
     res.send(formattedLedgerData);
   });
 });

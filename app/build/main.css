@@ -3,55 +3,102 @@
 	border-collapse: collapse;
 	width: 100%;
 	text-align: left;
-	font-size: 20px;
+	font-size: 18px;
+	font-weight: 100;
+	min-width: 750px;
 }
 
 .transactions__table___31cqC td {
 	border-top: 1px solid grey;
-}
-
-.transactions__table___31cqC td {
 	padding: 12px 0px;
 }
 
-.transactions__date___1kT2l {
-
+.transactions__table___31cqC th {
+	padding: 8px 0px;
+	font-weight: 100;
 }
 
 .transactions__time___2ADi_ {
 	font-size: 14px;
 	margin-top: 2px;
 }
+
+.transactions__type___12Esq {
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.transactions__descriptionText___fMq8x {
+	font-size: 16px;
+	margin: 0px 4px;
+}
+
+.transactions__descriptionMethod___3-X6Y {
+	font-size: 12px;
+	margin: 0px 4px;
+	font-style: italic;
+}
+
+.transactions__positive___ad6O- {
+	color: var(--light-green);
+}
+
+.transactions__negative___hFhw8 {
+	color: var(--orange);
+}:root {
+	--orange: #f4a547;
+	--light-green: #baddc9;
+	--grey: #666;
+}
+
+body {
+	margin: 0px;
+	font-family: helvetica;
+	color: var(--grey);
+}
+
 h1 {
 	margin: 0;
-	font-size: 32px;
+	font-size: 24px;
+	font-weight: 200;
+	white-space: nowrap;
+	margin-bottom: 6px;
 }
 
 h3 {
 	font-size: 24px;
-}
-
-.ledger__container___3prZP {
-	padding: 0px 24px;
-
+	font-weight: normal;
 }
 
 .ledger__header___1fmZy {
 	display: flex;
+	flex-flow: row wrap;
 	align-items: baseline;
 	justify-content: space-between;
-	padding: 28px 0;
+	padding: 18px 54px;
 }
 
-.ledger__ledgerVariations___1IL90 {
-	margin: 0px 5px;
-}
-
-.ledger__ledgerVariations___1IL90:hover {
+.ledger__ledgerTabs___4ZDcd:hover {
 	cursor: pointer;
 }
 
+.ledger__ledgerTabSeparation___1dGxv {
+	margin: 0px 4px;
+}
+
 .ledger__balance___1wtAg {
-	padding: 24px 0px;
+	padding: 32px 54px;
 	font-size: 28px;
+	background: var(--light-green);
+}
+
+.ledger__balanceText____K4El {
+	text-transform: uppercase;
+	font-size: 16px;
+	margin: 8px 0px;
+}
+
+.ledger__transactionContainer___1CuL8 {
+	padding: 32px 54px;
+	overflow-y: auto;
 }
